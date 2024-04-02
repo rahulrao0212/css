@@ -1,0 +1,157 @@
+<!-- 1- 0.75rem -->
+<!-- Follows 12-column grid system -->
+<!-- Mobile-first -->
+<!-- Screen-size breakpoints: -mobile, -tablet, and -desktop-->
+<!-- is-one-third, is-half, is-4 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulma Tabs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+
+  <!-- Tabs -->
+  <div class="container mt-6">
+    <div class="tabs">
+      <ul>
+        <li class="is-active" id="dashboard-tab"><a>Dashboard</a></li>
+        <li id="table-tab"><a>Table</a></li>
+        <li id="form-tab"><a>Form</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container mt-6">
+    <!-- Dashboard content -->
+    <div class="tab-content is-active" id="dashboard-content">
+      <h2 class="subtitle">Dashboard Content</h2>
+      <div class="columns is-multiline">
+        <div class="column is-4">
+          <div class="box">
+            <p>Card A</p>
+            <p>Test description</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box">
+            <p>Card B</p>
+            <p>Test description</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box">
+            <p>Card C</p>
+            <p>Test description</p>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="box">
+            <p>Card D</p>
+            <p>Test description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table content -->
+    <div class="tab-content is-hidden" id="table-content">
+      <h2 class="subtitle">Table Content</h2>
+      <table class="table is-bordered is-striped is-narrow is-hoverable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>State</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Test name</td>
+            <td>Karnataka</td>
+            <td>Male</td>
+          </tr>
+          <tr>
+            <td>Test name</td>
+            <td>Karnataka</td>
+            <td>Male</td>
+          </tr>
+          <tr>
+            <td>Test name</td>
+            <td>Karnataka</td>
+            <td>Male</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Form content -->
+    <div class="tab-content is-hidden" id="form-content">
+      <h2 class="subtitle">Form Content</h2>
+      <form>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Username">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">State</label>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option>Karnataka</option>
+                <option>Goa</option>
+                <option>Tamilnadu</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Gender</label>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="gender" value="male">
+              Male
+            </label>
+            <label class="radio">
+              <input type="radio" name="gender" value="female">
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-dark" type="button">Reset</button>
+          </div>
+          <div class="control">
+            <button class="button is-primary" type="submit">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tabs li').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tabs li').forEach(tab => {
+          tab.classList.remove('is-active');
+        });
+        tab.classList.add('is-active');
+
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.add('is-hidden');
+        });
+
+        const tabId = tab.getAttribute('id').replace('-tab', '-content');
+        document.getElementById(tabId).classList.remove('is-hidden');
+      });
+    });
+  </script>
+</body>
+</html>
